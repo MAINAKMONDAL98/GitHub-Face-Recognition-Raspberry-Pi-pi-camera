@@ -43,7 +43,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 
         # Save the captured image into the datasets folder
-        cv2.imwrite("/home/pi/facedata/s." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
+        cv2.imwrite("/home/pi/facedata/dataset/s." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
 
 
     #BODY DETECTION STUFF
