@@ -1,3 +1,4 @@
+
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
@@ -23,9 +24,13 @@ pathtoface = os.path.join(sys.path[0], 'face_classifier.xml')
 face_cascade = cv2.CascadeClassifier(pathtoface)
 face_id = 2
 count = 0
+
 #full body classifier
 pathtobody = os.path.join(sys.path[0], 'full_body.xml')
 body_cascade = cv2.CascadeClassifier(pathtobody)
+
+
+
 
 time.sleep(1)
 
@@ -39,11 +44,12 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     for (x,y,w,h) in faces:
         cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,0),2)
         GPIO.output(pin, GPIO.HIGH)
-                count += 1
+        count += 1
 
 
         # Save the captured image into the datasets folder
-        cv2.imwrite("/home/pi/facedata/dataset/s." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
+        cv2.imwrite("/home/pi/face_data/dataset/s." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
+
 
 
     #BODY DETECTION STUFF
@@ -51,13 +57,17 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     for (x,y,w,h) in bodies:
         cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,0),2)
         GPIO.output(pin, GPIO.HIGH)
+
+    
+
     #DISPLAY TO WINDOW
     cv2.imshow("Faces", image)
     key = cv2.waitKey(1)
 
     rawCapture.truncate(0)
 
-    if count>26 or key == ord("q"):
+    if count>29 or key == ord("q"):
         camera.close()
         cv2.destroyAllWindows()
         break
+
