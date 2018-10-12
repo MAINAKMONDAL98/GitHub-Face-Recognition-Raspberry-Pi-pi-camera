@@ -1,13 +1,13 @@
 import cv2,os
 import numpy as np
 from PIL import Image
-path = '/home/pi/facedata/dataset'
+path = 'facedata'
 recognizer = cv2.createLBPHFaceRecognizer()
 detector= cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 
 def getImagesAndLabels(path):
  
-    imagePaths=[os.path.join(path,f) for f in os.listdir(path)] 
+    imagePaths=[os.path.join(path,dataset) for dataset in os.listdir(path)] 
    
     faceSamples=[]
 
