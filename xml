@@ -1,0 +1,5 @@
+git clone https://github.com/AsankaD7/Face-Recognition-Train-YML-Python.git> copy haarcascade_frontalface_default.xml
+create facedata folder
+>paste haarcascade_frontalface_default.xml
+>create d/dataSet
+>create trainer/trainer.yml                                       
