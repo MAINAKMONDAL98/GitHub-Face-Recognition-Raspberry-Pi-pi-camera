@@ -3,3 +3,4 @@ create facedata folder
 >paste haarcascade_frontalface_default.xml
 >create d/dataSet
 >create trainer/trainer.yml                                       
+facedata.py(change id according to faces)>train.py>recognition.py
